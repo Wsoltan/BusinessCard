@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022382669810",
+    "project_id": "fbtest-ad860",
+    "storage_bucket": "fbtest-ad860.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022382669810:android:a392b14d7ccd96abfab56b",
+        "android_client_info": {
+          "package_name": "com.example.bcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022382669810-pn0i0t5bdqugssg5t751rqebuq08c3bt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMSOnAHpbc64lEGm3kVovejzdSRcH49E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022382669810-pn0i0t5bdqugssg5t751rqebuq08c3bt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

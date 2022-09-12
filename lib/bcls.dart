@@ -113,64 +113,74 @@ class BCWLS extends StatelessWidget {
                         ),
                         //height:(MediaQuery.of(context).size.height - 46) * 0.35,
                         width: (MediaQuery.of(context).size.width - 26) * 0.50,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  '${_unitCard.FName} ${_unitCard.LName}',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 25.0,
-                                    fontWeight: FontWeight.bold,
+                        child: GestureDetector(onTap: () {
+                          
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => ViewCardsList()),
+                                    ),
+                                  );
+                        },
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  '${_unitCard.Role}',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.normal,
+                                  Text(
+                                    '${_unitCard.FName} ${_unitCard.LName}',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  '${_unitCard.Dep}',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FontStyle.italic,
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
                                   ),
-                                ),
-                              ],
-                            )
-                          ],
+                                  Text(
+                                    '${_unitCard.Role}',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    '${_unitCard.Dep}',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       //================ End of Personal Details Box
@@ -311,92 +321,83 @@ class BCWLS extends StatelessWidget {
                         ),
                         height: (MediaQuery.of(context).size.height - 46) * 0.10,
                         width: (MediaQuery.of(context).size.width - 26) * 0.67,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            IconButton(
-                              icon: FaIcon(FontAwesomeIcons.facebook),
-                              iconSize: 25,
-                              color: Colors.blue,
-                              onPressed: () async {
-                                final url = '${_unitCard.fbLink}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ),
-                            IconButton(
-                              icon: FaIcon(FontAwesomeIcons.youtube),
-                              iconSize: 25,
-                              color: Colors.blue,
-                              onPressed: () async {
-                                final url = '${_unitCard.youtubeLink}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ),
-                            IconButton(
-                              icon: FaIcon(FontAwesomeIcons.instagram),
-                              iconSize: 25,
-                              color: Colors.blue,
-                              onPressed: () async {
-                                final url = '${_unitCard.instaLink}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ),
-                            IconButton(
-                              icon: FaIcon(FontAwesomeIcons.twitter),
-                              iconSize: 25,
-                              color: Colors.blue,
-                              onPressed: () async {
-                                final url = '${_unitCard.twitterLink}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ),
-                            IconButton(
-                              icon: FaIcon(FontAwesomeIcons.linkedin),
-                              iconSize: 25,
-                              color: Colors.blue,
-                              onPressed: () async {
-                                final url = '${_unitCard.lnkdnLink}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              width: 60,
-                            ),
-                            IconButton(
-                                icon: FaIcon(FontAwesomeIcons.minimize),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              IconButton(
+                                icon: FaIcon(FontAwesomeIcons.facebook),
                                 iconSize: 25,
                                 color: Colors.blue,
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: ((context) => ViewCardsList()),
-                                    ),
-                                  );
-                                }),
-                          ],
+                                onPressed: () async {
+                                  final url = '${_unitCard.fbLink}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                              ),
+                              IconButton(
+                                icon: FaIcon(FontAwesomeIcons.youtube),
+                                iconSize: 25,
+                                color: Colors.blue,
+                                onPressed: () async {
+                                  final url = '${_unitCard.youtubeLink}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                              ),
+                              IconButton(
+                                icon: FaIcon(FontAwesomeIcons.instagram),
+                                iconSize: 25,
+                                color: Colors.blue,
+                                onPressed: () async {
+                                  final url = '${_unitCard.instaLink}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                              ),
+                              IconButton(
+                                icon: FaIcon(FontAwesomeIcons.twitter),
+                                iconSize: 25,
+                                color: Colors.blue,
+                                onPressed: () async {
+                                  final url = '${_unitCard.twitterLink}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                              ),
+                              IconButton(
+                                icon: FaIcon(FontAwesomeIcons.linkedin),
+                                iconSize: 25,
+                                color: Colors.blue,
+                                onPressed: () async {
+                                  final url = '${_unitCard.lnkdnLink}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
+                              ),
+                              SizedBox(
+                                width: 60,
+                              ),
+                              
+                            ],
+                          ),
                         ),
                       ),
                       /* Container(

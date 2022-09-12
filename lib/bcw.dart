@@ -69,40 +69,45 @@ class BCWUnit extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ListTile(
-                leading: ClipOval(child: (Image.network("${_unitCard.ppURL}"))),
-                title: Text(
-                  '${_unitCard.FName} ${_unitCard.LName}',
-                  style: TextStyle(fontSize: 15),
+              GestureDetector(onTap: () {
+                
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => BCWLS(this._unitCard)),
+                            ),
+                          );
+              },
+                child: ListTile(
+                  leading: ClipOval(child: (Image.network("${_unitCard.ppURL}"))),
+                  title: Text(
+                    '${_unitCard.FName} ${_unitCard.LName}',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${_unitCard.Role}",
+                        style: TextStyle(color: Colors.black.withOpacity(0.7), height: 2, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "${_unitCard.Dep}",
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(0.7),
+                            fontStyle: FontStyle.italic,  height: 2, fontWeight: FontWeight.bold), 
+                      ),
+                     
+                    ],
+                  ),
+                  trailing: SizedBox(
+                      width: 100,
+                      child:
+                          (Image.asset('images/${_unitCard.Company}_logo.png'))),
+                  //isThreeLine: true,
+                  dense: true,
+                  visualDensity: VisualDensity(horizontal: 0, vertical: -4),
                 ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${_unitCard.Role}",
-                      style: TextStyle(color: Colors.black.withOpacity(0.7)),
-                    ),
-                    Text(
-                      "${_unitCard.Dep}",
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(0.7),
-                          fontStyle: FontStyle.italic),
-                    ),
-                    /* Text(
-                          "${_unitCard.Company}",
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.7),
-                              fontStyle: FontStyle.italic),
-                        ), */
-                  ],
-                ),
-                trailing: SizedBox(
-                    width: 100,
-                    child:
-                        (Image.asset('images/${_unitCard.Company}_logo.png'))),
-                //isThreeLine: true,
-                dense: true,
-                visualDensity: VisualDensity(horizontal: 0, vertical: -4),
               ),
               ListTile(
                 leading: Icon(Icons.email),
@@ -146,92 +151,7 @@ class BCWUnit extends StatelessWidget {
                 visualDensity: VisualDensity(horizontal: 0, vertical: -4),
               ),
               
-              /* ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.facebook),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: () async {
-                      final url = '${_unitCard.fbLink}';
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.youtube),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: () async {
-                      final url = '${_unitCard.youtubeLink}';
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.instagram),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: () async {
-                      final url = '${_unitCard.instaLink}';
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.twitter),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: () async {
-                      final url = '${_unitCard.twitterLink}';
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.linkedin),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: () async {
-                      final url = '${_unitCard.lnkdnLink}';
-                      if (await canLaunch(url)) {
-                        await launch(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
-                    },
-                  ),
-                  SizedBox(
-                    width: 60,
-                  ),
-                  IconButton(
-                    icon: FaIcon(FontAwesomeIcons.maximize),
-                    iconSize: 25,
-                    color: Colors.grey,
-                    onPressed: (() {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => BCWLS(this._unitCard)),
-                        ),
-                      );
-                    }),
-                  ),
-                ],
-              ), */
+              
               ExpansionTile(
                 title: SingleChildScrollView(
                 child: Row(
@@ -307,7 +227,7 @@ class BCWUnit extends StatelessWidget {
                     SizedBox(
                       width: 1,
                     ),
-                    IconButton(
+                   /*  IconButton(
                         icon: FaIcon(FontAwesomeIcons.maximize),
                         iconSize: 25,
                         color: Colors.blue,
@@ -318,7 +238,7 @@ class BCWUnit extends StatelessWidget {
                               builder: ((context) => BCWLS(this._unitCard)),
                             ),
                           );
-                        }),
+                        }), */
                   ],
                 ),
               ),

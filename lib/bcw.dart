@@ -145,95 +145,7 @@ class BCWUnit extends StatelessWidget {
                 dense: true,
                 visualDensity: VisualDensity(horizontal: 0, vertical: -4),
               ),
-              SingleChildScrollView(
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 10,
-                    ),
-                    IconButton(
-                      icon: FaIcon(FontAwesomeIcons.facebook),
-                      iconSize: 25,
-                      color: Colors.blue,
-                      onPressed: () async {
-                        final url = '${_unitCard.fbLink}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
-                    ),
-                    IconButton(
-                      icon: FaIcon(FontAwesomeIcons.youtube),
-                      iconSize: 25,
-                      color: Colors.blue,
-                      onPressed: () async {
-                        final url = '${_unitCard.youtubeLink}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
-                    ),
-                    IconButton(
-                      icon: FaIcon(FontAwesomeIcons.instagram),
-                      iconSize: 25,
-                      color: Colors.blue,
-                      onPressed: () async {
-                        final url = '${_unitCard.instaLink}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
-                    ),
-                    IconButton(
-                      icon: FaIcon(FontAwesomeIcons.twitter),
-                      iconSize: 25,
-                      color: Colors.blue,
-                      onPressed: () async {
-                        final url = '${_unitCard.twitterLink}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
-                    ),
-                    IconButton(
-                      icon: FaIcon(FontAwesomeIcons.linkedin),
-                      iconSize: 25,
-                      color: Colors.blue,
-                      onPressed: () async {
-                        final url = '${_unitCard.lnkdnLink}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                      },
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    IconButton(
-                        icon: FaIcon(FontAwesomeIcons.maximize),
-                        iconSize: 25,
-                        color: Colors.blue,
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => BCWLS(this._unitCard)),
-                            ),
-                          );
-                        }),
-                  ],
-                ),
-              ),
+              
               /* ButtonBar(
                 alignment: MainAxisAlignment.center,
                 children: [
@@ -321,7 +233,95 @@ class BCWUnit extends StatelessWidget {
                 ],
               ), */
               ExpansionTile(
-                title: Text(''),
+                title: SingleChildScrollView(
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    IconButton(
+                      icon: FaIcon(FontAwesomeIcons.facebook),
+                      iconSize: 25,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final url = '${_unitCard.fbLink}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: FaIcon(FontAwesomeIcons.youtube),
+                      iconSize: 25,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final url = '${_unitCard.youtubeLink}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: FaIcon(FontAwesomeIcons.instagram),
+                      iconSize: 25,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final url = '${_unitCard.instaLink}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: FaIcon(FontAwesomeIcons.twitter),
+                      iconSize: 25,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final url = '${_unitCard.twitterLink}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: FaIcon(FontAwesomeIcons.linkedin),
+                      iconSize: 25,
+                      color: Colors.blue,
+                      onPressed: () async {
+                        final url = '${_unitCard.lnkdnLink}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      width: 1,
+                    ),
+                    IconButton(
+                        icon: FaIcon(FontAwesomeIcons.maximize),
+                        iconSize: 25,
+                        color: Colors.blue,
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => BCWLS(this._unitCard)),
+                            ),
+                          );
+                        }),
+                  ],
+                ),
+              ),
                 children: <Widget>[
                   Center(
                     child: SizedBox(

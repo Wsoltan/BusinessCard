@@ -1,41 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:bcapp/locale/local_controller.dart';
-import 'package:bcapp/main.dart';
+
 import 'package:flutter/material.dart';
 import 'package:bcapp/cls/bccls.dart';
-import 'package:expansion_tile_card/expansion_tile_card.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:io';
-import 'package:get/get.dart';
+
 
 import 'package:bcapp/ViewCardsPage.dart';
-import 'package:bcapp/locale/local_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'dart:io';
-import 'package:vcard_maintained/vcard_maintained.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
-
-import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
-import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'locale/locale.dart';
 
 class BCWLS extends StatelessWidget {
   final UnitCard _unitCard;
@@ -51,135 +32,136 @@ class BCWLS extends StatelessWidget {
     }
     return Material(
       child: Container(
-          color: Colors.white,
-          //height: 100,
-          //color: Colors.transparent,
-          margin: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 0.0),
-          padding: const EdgeInsets.all(10.0),
-          child: SingleChildScrollView(
-            child: Container(
-              decoration: BoxDecoration(
-                //color: Colors.transparent,
-                border: Border.all(color: Colors.grey, width: 2.0),
-          
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0),
-                  bottomRight: Radius.circular(30.0),
-                  bottomLeft: Radius.circular(30.0),
-                ),
+        color: Colors.white,
+        //height: 100,
+        //color: Colors.transparent,
+
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              //color: Colors.transparent,
+              border: Border.all(color: Colors.grey, width: 2.0),
+
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0),
+                bottomLeft: Radius.circular(30.0),
               ),
-              child: Column(
-                children: [
-                  //Row 1 =================================================================
-                  Row(
+            ),
+            child: Column(mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                //Row 1 =================================================================
+                Container(height: (MediaQuery.of(context).size.height - 46) * 0.36 ,
+                  child: Row(
                     children: [
                       //================ Start of Personal Picture Box
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.transparent, width: 2),
                           borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
+                            topLeft: Radius.circular(5.0),
                             //topRight: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
+                            bottomRight: Radius.circular(5.0),
                             //bottomLeft: Radius.circular(15.0),
                           ),
                         ),
-                        height: (MediaQuery.of(context).size.height - 46) * 0.35,
-                        width: (MediaQuery.of(context).size.width - 26) * 0.22,
-                        child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(100),
-                              bottomRight: Radius.circular(100),
+                        /*  height: (MediaQuery.of(context).size.height - 46) * 0.34,
+                        width: (MediaQuery.of(context).size.width - 26) * 0.22, */
+                        child: Visibility(visible: false,
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(50),
+                                bottomRight: Radius.circular(50),
+                              ),
+                              child: Image.network(
+                                '${_unitCard.ppURL}',
+                                fit: BoxFit.contain,
+                                width: 100,
+                              ),
                             ),
-                            child: Image.network('${_unitCard.ppURL}'),
                           ),
                         ),
                       ),
                       //================ End of Personal Picture Box
                       //------------------------------------------------------------------------
                       //================ Start of Personal Details Box
-                      Container(
-                        decoration: BoxDecoration(
-                          //border: Border.all(color: Colors.green, width: 1.0),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                          ),
-                        ),
-                        //height:(MediaQuery.of(context).size.height - 46) * 0.35,
-                        width: (MediaQuery.of(context).size.width - 26) * 0.50,
-                        child: GestureDetector(onTap: () {
-                          
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: ((context) => ViewCardsList()),
+                      Expanded(
+                        child: Container(
+                          //height:(MediaQuery.of(context).size.height - 46) * 0.35,
+                          //width: (MediaQuery.of(context).size.width - 26) * 0.50,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => ViewCardsList()),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 20,
                                     ),
-                                  );
-                        },
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '${_unitCard.FName} ${_unitCard.LName}',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
+                                    Text(
+                                      '${_unitCard.FName} ${_unitCard.LName}',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 25.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '${_unitCard.Role}',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.normal,
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 20,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Text(
-                                    '${_unitCard.Dep}',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.normal,
-                                      fontStyle: FontStyle.italic,
+                                    Text(
+                                      '${_unitCard.Role}',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Text(
+                                      '${_unitCard.Dep}',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -187,39 +169,34 @@ class BCWLS extends StatelessWidget {
                       //----------------------------------------------------------------------------
                       //================ Start of Company Logo Box
                       Container(
-                        decoration: BoxDecoration(
-                          // border: Border.all(color: Colors.cyan, width: 2.0),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                          ),
+                        alignment: Alignment.centerRight,
+                        /* height: (MediaQuery.of(context).size.height - 46) * 0.34,
+                        width: (MediaQuery.of(context).size.width - 26) * 0.25, */
+                        child: Image.asset(
+                          'images/${_unitCard.Company}_QR_logo.jpeg',
+                          fit: BoxFit.contain,
+                          width: 200,
                         ),
-                        height: (MediaQuery.of(context).size.height - 46) * 0.35,
-                        width: (MediaQuery.of(context).size.width - 26) * 0.25,
-                        child: Image.asset('images/${_unitCard.Company}_QR_logo.jpeg'),
                       ),
                       //================ End of Company Logo Box
                     ],
                   ),
-                  //------------------------------------------------------------------------
-                  //-----------------------------------------------------------------------
-                  //Row 2==================================================================
-                  Row(
+                ),
+
+                //Row 2==================================================================
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Row(
                     children: [
+                      //Start of Contacts==================================================================
                       Container(
-                        decoration: BoxDecoration(
-                          //border: Border.all(color: Colors.red, width: 2.0),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                          ),
-                        ),
-                        height: (MediaQuery.of(context).size.height - 46) * 0.55,
-                        width: (MediaQuery.of(context).size.width - 26) * 0.60,
+                       /*  decoration: BoxDecoration(
+                          //color: Colors.transparent,
+                          border: Border.all(color: Colors.grey, width: 2.0),
+                        ), */
+                        height:
+                            (MediaQuery.of(context).size.height - 46) * 0.53,
+                        width: (MediaQuery.of(context).size.width - 26) * 0.750,
                         child: ListView(
                           children: [
                             ListTile(
@@ -250,31 +227,38 @@ class BCWLS extends StatelessWidget {
                           ],
                         ),
                       ),
+                      //End of Contacts==================================================================
                       //============================== Start of QR Code Image Box
-                      SingleChildScrollView(
-                        child: Container(
-                          height: (MediaQuery.of(context).size.height - 46) * 0.55,
-                          width: (MediaQuery.of(context).size.width - 26) * 0.40,
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: InkWell(
-                              child: GestureDetector(
+                      Container(
+                        alignment: Alignment.centerRight,
+                       /*  decoration: BoxDecoration(
+                          //color: Colors.transparent,
+                          border: Border.all(color: Colors.grey, width: 2.0),
+                        ), */
+                        /*  height: (MediaQuery.of(context).size.height - 46) * 0.58,
+                        width: (MediaQuery.of(context).size.width - 26) * 0.40, */
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Column(
+                            children: [
+                              GestureDetector(
                                 onTap: () async {
                                   try {
                                     final directory =
                                         await getApplicationDocumentsDirectory();
                                     final path = directory.path;
-                      
+
                                     var pathAsText =
                                         "$path/${_unitCard.Company}_vcf.vcf";
-                      
+
                                     var contactAsFile = File(pathAsText);
-                                    contactAsFile.writeAsString(
-                                        _unitCard.getFullVC().getFormattedString());
-                      
+                                    contactAsFile.writeAsString(_unitCard
+                                        .getFullVC()
+                                        .getFormattedString());
+
                                     // var vcf = contactAsFile.renameSync(
                                     //contactAsFile.path.replaceAll(".txt", ".vcf"));
-                      
+
                                     Share.shareFiles([pathAsText],
                                         subject:
                                             'Hi this me: ${_unitCard.FName}  ${_unitCard.LName} from ${_unitCard.Company}',
@@ -285,146 +269,120 @@ class BCWLS extends StatelessWidget {
                                   }
                                 },
                                 child: QrImage(
+                                  size: 170,
                                   data: _unitCard.getVC().getFormattedString(),
-                      
+
                                   foregroundColor: Colors.grey,
-                      
+
                                   version: QrVersions.auto,
                                   embeddedImage: AssetImage(
                                       'images/${_unitCard.Company}_QR_logo.jpeg'),
                                   embeddedImageStyle:
                                       QrEmbeddedImageStyle(size: Size(50, 25)),
-                      
+
                                   //errorCorrectionLevel: QrErrorCorrectLevel.H ,
                                 ),
                               ),
-                            ),
+                              //============================== End of QR Code Image Box
+                            ],
                           ),
                         ),
                       ),
                       //============================== End of QR Code Image Box
                     ],
                   ),
-                  //Row 3 ==============================================================================
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          //border: Border.all(color: Colors.red, width: 2.0),
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15.0),
-                            topRight: Radius.circular(15.0),
-                            bottomRight: Radius.circular(15.0),
-                            bottomLeft: Radius.circular(15.0),
-                          ),
+                ),
+                //Start of Social Media Button Bar==============================
+                Container(
+                  alignment: Alignment.topCenter,
+
+                   height: (MediaQuery.of(context).size.height - 46) * 0.085,
+                   /*width: (MediaQuery.of(context).size.width - 26) * 0.33, */
+                 /*  decoration: BoxDecoration(
+                    //color: Colors.transparent,
+                    border: Border.all(color: Colors.grey, width: 2.0),
+                  ), */
+
+                  
+                 
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: FaIcon(FontAwesomeIcons.facebook),
+                          iconSize: 25,
+                          color: Colors.blue,
+                          onPressed: () async {
+                            final url = '${_unitCard.fbLink}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
                         ),
-                        height: (MediaQuery.of(context).size.height - 46) * 0.10,
-                        width: (MediaQuery.of(context).size.width - 26) * 0.67,
-                        child: Center(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 10,
-                              ),
-                              IconButton(
-                                icon: FaIcon(FontAwesomeIcons.facebook),
-                                iconSize: 25,
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  final url = '${_unitCard.fbLink}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: FaIcon(FontAwesomeIcons.youtube),
-                                iconSize: 25,
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  final url = '${_unitCard.youtubeLink}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: FaIcon(FontAwesomeIcons.instagram),
-                                iconSize: 25,
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  final url = '${_unitCard.instaLink}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: FaIcon(FontAwesomeIcons.twitter),
-                                iconSize: 25,
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  final url = '${_unitCard.twitterLink}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              ),
-                              IconButton(
-                                icon: FaIcon(FontAwesomeIcons.linkedin),
-                                iconSize: 25,
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  final url = '${_unitCard.lnkdnLink}';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              ),
-                              SizedBox(
-                                width: 60,
-                              ),
-                              
-                            ],
-                          ),
+                        IconButton(
+                          icon: FaIcon(FontAwesomeIcons.youtube),
+                          iconSize: 25,
+                          color: Colors.blue,
+                          onPressed: () async {
+                            final url = '${_unitCard.youtubeLink}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
                         ),
-                      ),
-                      /* Container(
-                       decoration: BoxDecoration(
-                              //border: Border.all(color: Colors.cyan, width: 2.0),
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(15.0),
-                                topRight: Radius.circular(0.0),
-                                bottomRight: Radius.circular(15.0),
-                                bottomLeft: Radius.circular(0.0),
-                              ),
-                            ),
-                            height:
-                                (MediaQuery.of(context).size.height - 46) * 0.10,
-                            width:
-                                (MediaQuery.of(context).size.width - 26) * 0.33,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: ElevatedButton(onPressed: (){}, child: Text('Share Me'))
+                        IconButton(
+                          icon: FaIcon(FontAwesomeIcons.instagram),
+                          iconSize: 25,
+                          color: Colors.blue,
+                          onPressed: () async {
+                            final url = '${_unitCard.instaLink}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
                         ),
-                      ), */
-                    ],
-                  ),
-                ],
-              ),
+                        IconButton(
+                          icon: FaIcon(FontAwesomeIcons.twitter),
+                          iconSize: 25,
+                          color: Colors.blue,
+                          onPressed: () async {
+                            final url = '${_unitCard.twitterLink}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
+                        ),
+                        IconButton(
+                          icon: FaIcon(FontAwesomeIcons.linkedin),
+                          iconSize: 25,
+                          color: Colors.blue,
+                          onPressed: () async {
+                            final url = '${_unitCard.lnkdnLink}';
+                            if (await canLaunch(url)) {
+                              await launch(url);
+                            } else {
+                              throw 'Could not launch $url';
+                            }
+                          },
+                        ),
+                        
+                      ],
+                    ),
+                 
+                  //============================== End of Social Media Button Bar
+                )
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

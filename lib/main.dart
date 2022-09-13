@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bcapp/ViewCardsPage.dart';
 import 'package:bcapp/locale/local_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,7 +30,8 @@ import 'locale/locale.dart';
 String loggedInEmail = '';
 String _AppPath = '';
 var doc;
- String localLang = "en";
+String localLang = "en";
+bool ppisvisible = false;
 
 final List<VCard> _LvCard = [];
 var vCard = VCard();
@@ -60,6 +63,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   Locale _locale  = Locale.fromSubtags(languageCode: 'en') ;
+  
   
   @override
   Widget build(BuildContext context) {

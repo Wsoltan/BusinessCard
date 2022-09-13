@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 
+import 'package:bcapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:bcapp/cls/bccls.dart';
 
@@ -70,7 +71,7 @@ class BCWLS extends StatelessWidget {
                         ),
                         /*  height: (MediaQuery.of(context).size.height - 46) * 0.34,
                         width: (MediaQuery.of(context).size.width - 26) * 0.22, */
-                        child: Visibility(visible: false,
+                        child: Visibility(visible: ppisvisible,
                           child: FittedBox(
                             fit: BoxFit.fill,
                             child: ClipRRect(

@@ -54,6 +54,20 @@ class _SettingsWState extends State<SettingsW> {
             ],
           ),
           SizedBox(
+            height: 10,),
+            Row( mainAxisAlignment: MainAxisAlignment.center,
+              children: [Text('Show Picture')
+                ,Switch(
+                value: ppisvisible,
+                onChanged: (value) {
+                  setState(() {
+                    ppisvisible = value;
+                  });
+                },
+          ),
+              ],
+            ),
+            SizedBox(
             height: 10,
           ),
           ElevatedButton(

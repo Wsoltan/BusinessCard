@@ -11,6 +11,7 @@ class MyLocale implements Translations {
       "Password" : "كلمة المرور",
       'Email address': "البريد الأليكتروني",
       'Ext': "-",
+      'Show Picture':'اظهر الصورة'
     }, 
     "en": {
       "Cards List": "Cards List",
@@ -18,6 +19,7 @@ class MyLocale implements Translations {
       "Password": "Password",
       'Email address': "Email address",
       'Ext': "Ext.",
+      'Show Picture':'Show Picture'
       }
     };
 }

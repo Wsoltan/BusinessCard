@@ -54,8 +54,15 @@ class _CardsListWState extends State<CardsListW> {
     Reference ref =
         FirebaseStorage.instance.ref().child("usesrs_images/${_userID}_PP.png");
 
+         var url;
+
     //get image url from firebase storage
-    var url = await ref.getDownloadURL();
+    try {
+     url = await ref.getDownloadURL();
+    } catch (e) {
+      ppisvisible = false;
+    }
+    
 
     //var codata = await FirebaseFirestore.instance.collection('fixedData').get();
 

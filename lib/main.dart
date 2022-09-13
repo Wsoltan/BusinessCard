@@ -31,7 +31,7 @@ String loggedInEmail = '';
 String _AppPath = '';
 var doc;
 String localLang = "en";
-bool ppisvisible = false;
+bool ppisvisible = true;
 
 final List<VCard> _LvCard = [];
 var vCard = VCard();

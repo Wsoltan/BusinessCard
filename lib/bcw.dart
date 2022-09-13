@@ -79,8 +79,8 @@ class BCWUnit extends StatelessWidget {
                           );
               },
                 child: ListTile(
-                  leading: ClipOval(child: (Image.network("${_unitCard.ppURL}"))),
-                  title: Text(
+                  leading: ClipOval(child: ppisvisible?(Image.network("${_unitCard.ppURL}")):(Image.asset("images/${_unitCard.FName!.substring(0,1).toUpperCase()}.png"))),
+                  title: Text( 
                     '${_unitCard.FName} ${_unitCard.LName}',
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
